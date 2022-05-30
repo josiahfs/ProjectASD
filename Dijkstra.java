@@ -45,9 +45,9 @@ public class Dijkstra {
             if (marked < 0) {
                 return;
             }
-            if (distance[marked] == Double.MAX_VALUE) {
-                return;
-            }
+           // if (distance[marked] == Double.MAX_VALUE) {
+             //   return;
+          //  }
             selected[marked] = true;
             if (marked == dst) {
                 return;
@@ -64,5 +64,59 @@ public class Dijkstra {
             }
 
         }
+    }
+    public SPVNode makeIntoSPVNode(int src, int dst){
+        SPVNode node = new SPVNode(src,dst);
+        node.distance = getDistance(src,dst);
+        int k = dst;
+        node.addVertex(dst);
+        while(k!=src){
+            node.addVertex(parent[k]);
+            k=parent[k];
+        }
+        return node;
+    }
+    public void computePathForward(int start, int[] vToVisit){
+        int temp = start;
+        int vlength = vToVisit.length;
+        double totalCost = 0;
+        boolean[] visited = new boolean[nTown];
+        for (int i = 0; i < nTown; i++) {
+            visited[i] = false;
+        }
+        ArrayList<Integer> SPVArray = new ArrayList<Integer>();
+        SPVArray.add(temp);
+        for(int i = 0; i<vlength;i++){
+            solve(temp,vToVisit[0]);
+            
+            PriorityQueue<SPVNode> pq = new 
+             PriorityQueue<SPVNode>(vlength-i, new SPVNodeComparator());
+            
+            for(int j = 0; j<vlength;j++){
+                if(!visited[vToVisit[j]]){
+                    SPVNode tempNode = makeIntoSPVNode(temp, vToVisit[j]);
+                    pq.add(tempNode);
+                }
+            }
+            
+            SPVNode min = pq.peek();
+            System.out.println(i+1+"st Place: "+ min.dst+" Dist: "+min.distance);
+            totalCost += min.distance;
+            Iterator<Integer> iter = min.path.listIterator();
+            while(iter.hasNext()){
+                int n = iter.next();
+                if(n!=temp){
+                    SPVArray.add(n);
+                }
+            }
+            visited[min.dst]=true;
+            temp = min.dst;
+        }
+        System.out.print("Shortest path: ");
+        Iterator<Integer> iter = SPVArray.listIterator();
+        while(iter.hasNext()){
+            System.out.print(iter.next() + " ");
+        }
+        System.out.print("\nDistance: " + totalCost);
     }
 }
