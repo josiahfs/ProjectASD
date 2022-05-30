@@ -2,6 +2,7 @@ public class Dijkstra {
     int nTown;
     double[][] map;
     double[] distance;
+    int[] parent;
     int src;
 
     public Dijkstra(double[][] map) {
@@ -29,12 +30,14 @@ public class Dijkstra {
         this.src = src;
         boolean[] selected = new boolean[nTown];
         distance = new double[nTown];
+        parent = new int[nTown];
 
         for (int i = 0; i < nTown; i++) {
             distance[i] = Double.MAX_VALUE;
             selected[i] = false;
         }
         distance[src] = 0;
+        parent[src]=src;
 
         while (true) {
             int marked = minIndex(distance, selected);
@@ -55,6 +58,7 @@ public class Dijkstra {
                     double newDistance = distance[marked] + map[marked][j];
                     if (newDistance < distance[j]) {
                         distance[j] = newDistance;
+                        parent[j]= marked;
                     }
                 }
             }
