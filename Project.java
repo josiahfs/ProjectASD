@@ -188,7 +188,7 @@ public class Project {
 	    // 13 = Temanggung      28 = Magelang
 	    // 14 = Kendal
 		
-		double graph[][] = new double[][] {
+		/*double graph[][] = new double[][] {
 	          { 0, 41, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	          { 41, 0, 12, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	          { 29, 12, 0, 91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -218,9 +218,50 @@ public class Project {
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 67, 0, 82, 0, 0, 0, 38, 0 },
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 78, 0, 0, 0, 0, 0, 38, 0, 0 },
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43, 60, 21, 0, 0, 0, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-		};
-		int[] toVisit = {4,6,8,9};
-		Dijkstra map1 = new Dijkstra(graph);
+		};*/
+		Dijkstra map1 = new Dijkstra(29);
+        map1.addEdge(0, 1, 41);
+        map1.addEdge(0, 2, 29);
+        map1.addEdge(2, 3, 91);
+        map1.addEdge(3, 4, 48);
+        map1.addEdge(4, 5, 28);
+        map1.addEdge(1, 6, 33);
+        map1.addEdge(1, 2, 12);
+        map1.addEdge(6, 10, 48);
+        map1.addEdge(6, 7, 66);
+        map1.addEdge(10,14,75);
+        map1.addEdge(14, 13, 70);
+        map1.addEdge(14, 15, 36);
+        map1.addEdge(15, 19, 34);
+        map1.addEdge(15, 16, 50);
+        map1.addEdge(19, 20, 38);
+        map1.addEdge(19, 21, 34);
+        map1.addEdge(20, 27, 78);
+        map1.addEdge(20, 21, 55);
+        map1.addEdge(27, 26, 38);
+        map1.addEdge(26, 21, 67);
+        map1.addEdge(26, 23, 82);
+        map1.addEdge(21, 22, 65);
+        map1.addEdge(16, 13, 55);
+        map1.addEdge(16, 17, 36);
+        map1.addEdge(13, 28, 21);
+        map1.addEdge(13, 12, 40);
+        map1.addEdge(12, 28, 60);
+        map1.addEdge(12, 9, 47);
+        map1.addEdge(9, 7, 31);
+        map1.addEdge(7, 3, 35);
+        map1.addEdge(3, 5, 30);
+        map1.addEdge(3, 8, 74);
+        map1.addEdge(5, 8, 52);
+        map1.addEdge(8, 11, 42);
+        map1.addEdge(11, 28, 43);
+        map1.addEdge(28, 17, 65);
+        map1.addEdge(17, 18, 34);
+        map1.addEdge(17, 22, 29);
+        map1.addEdge(22, 23, 35);
+        map1.addEdge(22, 24, 15);
+        map1.addEdge(24, 25, 44);
+		int[] toVisit = {4,6,9,8};
 		map1.computePathForward(0, toVisit);
-	}
+ 	}
 }
