@@ -161,24 +161,6 @@ class Dijkstra {
 }
 
 
-    // index tiap kota
-    // 0 = Brebes           15 = Semarang
-    // 1 = Tegal            16 = Salatiga
-    // 2 = Slawi            17 = Boyolali
-    // 3 = Purwokerto       18 = Klaten
-    // 4 = Cilacap          19 = Demak
-    // 5 = Kroya            20 = Kudus
-    // 6 = Pemalang         21 = Purwodadi
-    // 7 = Purbalingga      22 = Solo
-    // 8 = Kebumen          23 = Sragen
-    // 9 = Banjarnegara     24 = Sukoharjo
-    // 10 = Pekalongan      25 = Wonogiri
-    // 11 = Purworejo       26 = Blora
-    // 12 = Wonosobo        27 = Rembang
-    // 13 = Temanggung      28 = Magelang
-    // 14 = Kendal
-
-
 public class Project {
 	public static void main(String[] args) {
 		// index tiap kota
@@ -228,7 +210,6 @@ public class Project {
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 67, 0, 82, 0, 0, 0, 38, 0 },
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 78, 0, 0, 0, 0, 0, 38, 0, 0 },
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43, 60, 21, 0, 0, 0, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-		};
-		
+		};	
 	}
 }
