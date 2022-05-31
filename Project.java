@@ -48,6 +48,14 @@ class Dijkstra {
         this.map = map;
         nTown = map.length;
     }
+    public Dijkstra(int n){
+        nTown = n;
+        map = new double[nTown][nTown];
+    }
+    public void addEdge(int from, int to, double len){
+        map[from][to] = len;
+        map[to][from] = len;
+    }
 
     int minIndex(double[] distance, boolean[] selected) {
         double dist = Double.MAX_VALUE;
