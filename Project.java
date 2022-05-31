@@ -92,15 +92,15 @@ class Dijkstra {
             if (marked < 0) {
                 return;
             }
-           // if (distance[marked] == Double.MAX_VALUE) {
-             //   return;
-          //  }
-            selected[marked] = true;
-            if (marked == dst) {
+            if (distance[marked] == Double.MAX_VALUE) {
                 return;
             }
+            selected[marked] = true;
+            //if (marked == dst) {
+            //    return;
+          //  }
 
-            for (int j = 0; j < nTown-1; j++) {
+            for (int j = 0; j < nTown; j++) {
                 if (map[marked][j] > 0 && !selected[j]) {
                     double newDistance = distance[marked] + map[marked][j];
                     if (newDistance < distance[j]) {
