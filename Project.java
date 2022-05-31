@@ -92,7 +92,7 @@ class Dijkstra {
                 return;
             }
 
-            for (int j = 0; j < nTown; j++) {
+            for (int j = 0; j < nTown-1; j++) {
                 if (map[marked][j] > 0 && !selected[j]) {
                     double newDistance = distance[marked] + map[marked][j];
                     if (newDistance < distance[j]) {
@@ -180,7 +180,7 @@ public class Project {
 	    // 13 = Temanggung      28 = Magelang
 	    // 14 = Kendal
 		
-		double map[][] = new double[][] {
+		double graph[][] = new double[][] {
 	          { 0, 41, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	          { 41, 0, 12, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	          { 29, 12, 0, 91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -210,6 +210,9 @@ public class Project {
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 67, 0, 82, 0, 0, 0, 38, 0 },
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 78, 0, 0, 0, 0, 0, 38, 0, 0 },
 	          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43, 60, 21, 0, 0, 0, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-		};	
+		};
+		int[] toVisit = {4,6,8,9};
+		Dijkstra map1 = new Dijkstra(graph);
+		map1.computePathForward(0, toVisit);
 	}
 }
