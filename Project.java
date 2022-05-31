@@ -147,7 +147,7 @@ class Dijkstra {
             }
             
             SPVNode min = pq.peek();
-            System.out.println(i+1+"st Place: "+ min.dst+" Dist: "+min.distance);
+            System.out.println("Tempat ke-"+(i+1)+ " : "+ min.dst+" Jarak : "+min.distance+" km");
             totalCost += min.distance;
             Iterator<Integer> iter = min.path.listIterator();
             while(iter.hasNext()){
@@ -159,12 +159,12 @@ class Dijkstra {
             visited[min.dst]=true;
             temp = min.dst;
         }
-        System.out.print("Shortest path: ");
+        System.out.print("Rute Terdekat: ");
         Iterator<Integer> iter = SPVArray.listIterator();
         while(iter.hasNext()){
             System.out.print(iter.next() + " ");
         }
-        System.out.print("\nDistance: " + totalCost);
+        System.out.print("\nJarak Total: " + totalCost + " km");
     }
 }
 
