@@ -331,18 +331,20 @@ public class Project {
         map1.addEdge(22, 23, 35);
         map1.addEdge(22, 24, 15);
         map1.addEdge(24, 25, 44);
-
+        
+        while (true) {
+        
         Scanner in = new Scanner(System.in);
          System.out.println("Program untuk menentukan rute perjalan antar kota di Jawa Tengah");
         System.out.println("Berikut ini adalah daftar kota yang tersedia :");
-        System.out.println("0 = Brebes\t\t10 = Pekalongan\t\t20 = Kudus");
+        System.out.println("0 = Brebes\t\t10 = Pekalongan\t20 = Kudus");
         System.out.println("1 = Tegal\t\t11 = Purworejo\t\t21 = Purwodadi");
         System.out.println("2 = Slawi\t\t12 = Wonosobo\t\t22 = Solo");
-        System.out.println("3 = Purwokerto\t\t13 = Temanggung\t\t23 = Sragen");
+        System.out.println("3 = Purwokerto\t\t13 = Temanggung\t23 = Sragen");
         System.out.println("4 = Cilacap\t\t14 = Kendal\t\t24 = Sukoharjo");
         System.out.println("5 = Kroya\t\t15 = Semarang\t\t25 = Wonogiri");
         System.out.println("6 = Pemalang\t\t16 = Salatiga\t\t26 = Blora");
-        System.out.println("7 = Purbalingga\t\t17 = Boyolali\t\t27 = Rembang");
+        System.out.println("7 = Purbalingga\t17 = Boyolali\t\t27 = Rembang");
         System.out.println("8 = Kebumen\t\t18 = Klaten\t\t28 = Magelang");
         System.out.println("9 = Banjarnegara\t19 = Demak");
 
@@ -361,6 +363,12 @@ public class Project {
         }
 		
 		map1.computePathForward(n, toVisit);  
-        in.close();
+        System.out.println("Apakah Anda ingin mencari rute lain? Ya(1) / Tidak(0)");
+        int uhm = in.nextInt();
+        if(uhm == 0) {
+        	in.close();
+        	break;
+        }
+        }
  	}
 }
