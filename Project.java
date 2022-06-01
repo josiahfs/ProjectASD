@@ -165,9 +165,59 @@ class Dijkstra {
             System.out.print(iter.next() + " ");
         }
         System.out.print("\nJarak Total: " + totalCost + " km");
+
+        System.out.print("\n\nKembali ke titik awal (Ya (1) / Tidak (0)) ? ");
+        Scanner in = new Scanner(System.in);
+        int k = in.nextInt();
+        if (k == 1)
+        {
+            back(temp, start);
+        }
+        else if (k == 0){
+            System.out.print("Terima Kasih");
+        }
+    }
+
+    public void back(int start, int vToVisit){
+        int temp = start;
+        boolean[] visited = new boolean[nTown];
+        for (int i = 0; i < nTown; i++) {
+            visited[i] = false;
+        }
+        ArrayList<Integer> SPVArray = new ArrayList<Integer>();
+        SPVArray.add(temp);
+        for(int i = 0; i<1;i++){
+            solve(temp,vToVisit);
+            
+            PriorityQueue<SPVNode> pq = new 
+             PriorityQueue<SPVNode>(1-i, new SPVNodeComparator());
+            
+            for(int j = 0; j<1;j++){
+                if(!visited[vToVisit]){
+                    SPVNode tempNode = makeIntoSPVNode(temp, vToVisit);
+                    pq.add(tempNode);
+                }
+            }
+            
+            SPVNode min = pq.peek();
+            System.out.println("Kembali ke"+ " : "+ min.dst+" \nJarak : "+min.distance+" km");
+            Iterator<Integer> iter = min.path.listIterator();
+            while(iter.hasNext()){
+                int n = iter.next();
+                if(n!=temp){
+                    SPVArray.add(n);
+                }
+            }
+            visited[min.dst]=true;
+            temp = min.dst;
+        }
+        System.out.print("Rute Terdekat: ");
+        Iterator<Integer> iter = SPVArray.listIterator();
+        while(iter.hasNext()){
+            System.out.print(iter.next() + " ");
+        }
     }
 }
-
 
 public class Project {
 	public static void main(String[] args) {
@@ -261,7 +311,25 @@ public class Project {
         map1.addEdge(22, 23, 35);
         map1.addEdge(22, 24, 15);
         map1.addEdge(24, 25, 44);
-		int[] toVisit = {4,6,9,8};
-		map1.computePathForward(0, toVisit);
+
+        Scanner in = new Scanner(System.in);
+        
+        System.out.print("Posisi Awal : ");
+        int n = in.nextInt();
+        
+        System.out.print("Jumlah Destinasi : ");
+        int N = in.nextInt();
+        int[] toVisit = new int[N];
+
+        
+
+        for (int i = 0; i < N; i++) {
+            System.out.print("Destinasi ke-" + (i + 1) + " : ");
+            toVisit[i] = in.nextInt();
+        }
+		
+		map1.computePathForward(n, toVisit);
+        
+        
  	}
 }
