@@ -37,6 +37,7 @@ class SPVNodeComparator implements Comparator<SPVNode>{
     }
 }
 
+
 class Dijkstra {
     int nTown;
     double[][] map;
@@ -48,6 +49,71 @@ class Dijkstra {
         this.map = map;
         nTown = map.length;
     }
+
+    public static String getLabel(int idx){
+        String label = "";
+        if (idx == 0) {
+            label = "Brebes";
+        } else if (idx == 1) {
+            label = "Tegal";
+        } else if (idx == 2) {
+            label = "Slawi";
+        } else if (idx == 3) {
+            label = "Purwokerto";
+        } else if (idx == 4) {
+            label = "Cilacap";
+        } else if (idx == 5) {
+            label = "Kroya";
+        } else if (idx == 6) {
+            label = "Pemalang";
+        } else if (idx == 7) {
+            label = "Purbalingga";
+        } else if (idx == 8) {
+            label = "Kebumen";
+        } else if (idx == 9) {
+            label = "Banjarnegara";
+        } else if (idx == 10) {
+            label = "Pekalongan";
+        } else if (idx == 11) {
+            label = "Purworejo";
+        } else if (idx == 12) {
+            label = "Wonosobo";
+        } else if (idx == 13) {
+            label = "Temanggung";
+        } else if (idx == 14) {
+            label = "Kendal";
+        } else if (idx == 15) {
+            label = "Semarang";
+        } else if (idx == 16) {
+            label = "Salatiga";
+        } else if (idx == 17) {
+            label = "Boyolali";
+        } else if (idx == 18) {
+            label = "Klaten";
+        } else if (idx == 19) {
+            label = "Demak";
+        } else if (idx == 20) {
+            label = "Kudus";
+        } else if (idx == 21) {
+            label = "Purwodadi";
+        } else if (idx == 22) {
+            label = "Solo";
+        } else if (idx == 23) {
+            label = "Sragen";
+        } else if (idx == 24) {
+            label = "Sukoharjo";
+        } else if (idx == 25) {
+            label = "Wonogiri";
+        } else if (idx == 26) {
+            label = "Blora";
+        } else if (idx == 27) {
+            label = "Rembang";
+        } else if (idx == 28) {
+            label = "Magelang";
+        }
+        return label;
+    }
+
     public Dijkstra(int n){
         nTown = n;
         map = new double[nTown][nTown];
@@ -147,7 +213,7 @@ class Dijkstra {
             }
             
             SPVNode min = pq.peek();
-            System.out.println("Tempat ke-"+(i+1)+ " : "+ min.dst+" Jarak : "+min.distance+" km");
+            System.out.println("Tempat ke-"+(i+1)+ " : "+ getLabel(min.dst) +"\tJarak : "+min.distance+" km");
             totalCost += min.distance;
             Iterator<Integer> iter = min.path.listIterator();
             while(iter.hasNext()){
@@ -162,11 +228,11 @@ class Dijkstra {
         System.out.print("Rute Terdekat: ");
         Iterator<Integer> iter = SPVArray.listIterator();
         while(iter.hasNext()){
-            System.out.print(iter.next() + " ");
+            System.out.print(getLabel(iter.next()) + " ");
         }
         System.out.print("\nJarak Total: " + totalCost + " km");
 
-        System.out.print("\n\nKembali ke titik awal (Ya (1) / Tidak (0)) ? ");
+        System.out.print("\n\nKembali ke titik awal {" +getLabel(start)+ "} (Ya (1) / Tidak (0)) ? ");
         Scanner in = new Scanner(System.in);
         int k = in.nextInt();
         if (k == 1)
@@ -200,7 +266,7 @@ class Dijkstra {
             }
             
             SPVNode min = pq.peek();
-            System.out.println("Kembali ke"+ " : "+ min.dst+" \nJarak : "+min.distance+" km");
+            System.out.println("Kembali ke"+ " : "+ getLabel(min.dst)+"\tJarak : "+min.distance+" km");
             Iterator<Integer> iter = min.path.listIterator();
             while(iter.hasNext()){
                 int n = iter.next();
@@ -214,29 +280,14 @@ class Dijkstra {
         System.out.print("Rute Terdekat: ");
         Iterator<Integer> iter = SPVArray.listIterator();
         while(iter.hasNext()){
-            System.out.print(iter.next() + " ");
+            System.out.print(getLabel(iter.next()) + " ");
         }
+        System.out.println("Terima Kasih");
     }
 }
 
 public class Project {
 	public static void main(String[] args) {
-		// index tiap kota
-	    // 0 = Brebes           15 = Semarang
-	    // 1 = Tegal            16 = Salatiga
-	    // 2 = Slawi            17 = Boyolali
-	    // 3 = Purwokerto       18 = Klaten
-	    // 4 = Cilacap          19 = Demak
-	    // 5 = Kroya            20 = Kudus
-	    // 6 = Pemalang         21 = Purwodadi
-	    // 7 = Purbalingga      22 = Solo
-	    // 8 = Kebumen          23 = Sragen
-	    // 9 = Banjarnegara     24 = Sukoharjo
-	    // 10 = Pekalongan      25 = Wonogiri
-	    // 11 = Purworejo       26 = Blora
-	    // 12 = Wonosobo        27 = Rembang
-	    // 13 = Temanggung      28 = Magelang
-	    // 14 = Kendal
 		
 		/*double graph[][] = new double[][] {
 	          { 0, 41, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -313,7 +364,19 @@ public class Project {
         map1.addEdge(24, 25, 44);
 
         Scanner in = new Scanner(System.in);
-        
+        System.out.println("Program untuk menentukan rute perjalan antar kota di Jawa Tengah");
+        System.out.println("Berikut ini adalah daftar kota yang tersedia :");
+        System.out.println("0 = Brebes\t\t10 = Pekalongan\t\t20 = Kudus");
+        System.out.println("1 = Tegal\t\t11 = Purworejo\t\t21 = Purwodadi");
+        System.out.println("2 = Slawi\t\t12 = Wonosobo\t\t22 = Solo");
+        System.out.println("3 = Purwokerto\t\t13 = Temanggung\t\t23 = Sragen");
+        System.out.println("4 = Cilacap\t\t14 = Kendal\t\t24 = Sukoharjo");
+        System.out.println("5 = Kroya\t\t15 = Semarang\t\t25 = Wonogiri");
+        System.out.println("6 = Pemalang\t\t16 = Salatiga\t\t26 = Blora");
+        System.out.println("7 = Purbalingga\t\t17 = Boyolali\t\t27 = Rembang");
+        System.out.println("8 = Kebumen\t\t18 = Klaten\t\t28 = Magelang");
+        System.out.println("9 = Banjarnegara\t19 = Demak");
+
         System.out.print("Posisi Awal : ");
         int n = in.nextInt();
         
@@ -328,8 +391,7 @@ public class Project {
             toVisit[i] = in.nextInt();
         }
 		
-		map1.computePathForward(n, toVisit);
-        
-        
+		map1.computePathForward(n, toVisit);  
+        in.close();
  	}
 }
